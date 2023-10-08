@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Генератор случайных чисел</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Случайные числа</th>
+        </tr>
+        <!-- Генерирует 30 случайных чисел и добавляет их в таблицу -->
+        <script>
+            for (let i = 0; i < 30; i++) {
+                const randomNumber = Math.floor(Math.random() * 100);
+                const table = document.querySelector("table");
+                const newRow = table.insertRow(-1);
+                const cell = newRow.insertCell(0);
+                cell.innerHTML = randomNumber;
+            }
+        </script>
+    </table>
+    
+    <button id="generateButton">Добавить случайное число</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const table = document.querySelector("table");
+            const generateButton = document.querySelector("#generateButton");
+
+            function generateRandomNumber() {
+                return Math.floor(Math.random() * 100); // Генерирует случайное число от 0 до 99
+            }
+
+            function addRandomNumberToTable() {
+                const randomNumber = generateRandomNumber();
+                const newRow = table.insertRow(1); // Вставляет новую строку в начало таблицы
+                const cell = newRow.insertCell(0); // Вставляет ячейку в новую строку
+                cell.innerHTML = randomNumber; // Устанавливает сгенерированное число в ячейку
+            }
+
+            generateButton.addEventListener("click", addRandomNumberToTable);
+        });
+    </script>
+</body>
+</html>

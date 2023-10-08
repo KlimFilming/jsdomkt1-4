@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню с уровнями</title>
+    <style>
+        /* Стили для выпадающего меню */
+        .menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .menu:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Стили для кнопок меню */
+        .dropdown-content button {
+            background-color: transparent;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .dropdown-content button:hover {
+            background-color: #ddd;
+        }
+
+        /* Стили для изменения цвета фона */
+        .level1-bg {
+            background-color: lightblue;
+        }
+
+        .level2-bg {
+            background-color: lightgreen;
+        }
+
+        .level3-bg {
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        Меню
+        <div class="dropdown-content">
+            <button class="level1">Уровень 1</button>
+            <button class="level2">Уровень 2</button>
+            <button class="level3">Уровень 3</button>
+        </div>
+    </div>
+
+    <script>
+        // Изменение цвета фона
+        const level1Button = document.querySelector('.level1');
+        const level2Button = document.querySelector('.level2');
+        const level3Button = document.querySelector('.level3');
+
+        level1Button.addEventListener('click', () => {
+            document.body.style.backgroundColor = 'lightblue';
+        });
+
+        level2Button.addEventListener('click', () => {
+            document.body.style.backgroundColor = 'lightgreen';
+        });
+
+        level3Button.addEventListener('click', () => {
+            document.body.style.backgroundColor = 'lightcoral';
+        });
+    </script>
+</body>
+</html>

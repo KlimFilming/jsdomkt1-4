@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .slider-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .slider {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        #slider-value {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+    <title>Слайдер</title>
+</head>
+<body>
+    <div class="slider-container">
+        <input type="range" min="0" max="100" value="50" class="slider" id="slider">
+        <span id="slider-value">50</span>
+    </div>
+    <script>
+        const slider = document.getElementById("slider");
+        const sliderValue = document.getElementById("slider-value");
+
+        slider.addEventListener("input", function() {
+            sliderValue.textContent = slider.value;
+        });
+
+        slider.addEventListener("mousedown", function() {
+            document.addEventListener("mousemove", updateSliderValue);
+            
+            document.addEventListener("mouseup", function() {
+                document.removeEventListener("mousemove", updateSliderValue);
+            });
+        });
+
+        function updateSliderValue(event) {
+            const sliderRect = slider.getBoundingClientRect();
+            const offsetX = event.clientX - sliderRect.left;
+            const percent = (offsetX / sliderRect.width) * 100;
+            
+            if (percent >= 0 && percent <= 100) {
+                slider.value = Math.round((percent / 100) * (slider.max - slider.min) + Number(slider.min));
+                sliderValue.textContent = slider.value;
+            }
+        }
+    </script>
+</body>
+</html>
